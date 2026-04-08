@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quickboard
+  namespace: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: quickboard
+  template:
+    metadata:
+      labels:
+        app: quickboard
+    spec:
+      containers:
+      - name: quickboard
+        image: quickboard:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
